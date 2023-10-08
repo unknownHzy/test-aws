@@ -1,7 +1,7 @@
 # workflows中定义的工作流程，可以有多个，每个工作流程可以执行不同的任务
 
 # https://docs.github.com/zh/actions/learn-github-actions/understanding-github-actions
-# 工作流：workflow 可以定义多个工作流，工作流还可以被复用
+# 工作流：workflows 可以定义多个工作流，工作流还可以被复用
 name: STG-1. Build and push image to ECR
 on:
   # 这里workflow_dispatch如果是 push的话，可以指定push到指定分支来触发此工作流
@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 env:
-  AWS_REGION: us-ease-2
+  AWS_REGION: us-east-2
   ECR_REPOSITORY: fortress-hangzhou-dev
 jobs:
   DeployOnEcsDEV:
