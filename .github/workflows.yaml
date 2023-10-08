@@ -1,0 +1,45 @@
+# workflows中定义的工作流程，可以有多个，每个工作流程可以执行不同的任务
+
+# https://docs.github.com/zh/actions/learn-github-actions/understanding-github-actions
+# 工作流：workflow 可以定义多个工作流，工作流还可以被复用
+name: STG-1. Build and push image to ECR
+on:
+  # 这里workflow_dispatch如果是 push的话，可以指定push到指定分支来触发此工作流
+  # https://docs.github.com/zh/actions/using-workflows/events-that-trigger-workflows#push
+  workflow_dispatch:
+
+env:
+  AWS_REGION: us-ease-2
+  ECR_REPOSITORY: fortress-hangzhou-dev
+jobs:
+  DeployOnEcsDEV:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@13d241b293754004c80624b5567555c4a39ffbe3
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_DEV }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_DEV }}
+          aws-region: ${{ env.AWS_REGION }}
+
+          # todo CI test
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@aaf69d68aa3fb14c1d5a6be9ac61fe15b48453a2
+
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: latest
+        run:
+          # Build a docker container and
+          # push it to ECR so that it can
+          # be deployed to ECS.
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
