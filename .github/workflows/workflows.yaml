@@ -27,6 +27,25 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
           # todo CI test
+      - name: copy CI env file from s3
+        run: aws s3 sync s3://fortress-uat/Installer-API/CI/ ./src/
+
+      - name: Run CI Tests
+        run: |
+          cd ./src/ && npm install
+          docker run -d --name=fortress-mysql --net=host --env MYSQL_DATABASE=fortresstest --env MYSQL_ROOT_PASSWORD=Root@123456 mysql:8.0
+          sleep 30s
+          npx sequelize-cli db:migrate
+          npx sequelize-cli db:seed:all
+          npm run test
+
+      - name: Cleaning CI Tests Resources
+        run: |
+          cd ./src/
+          rm -rfv .env
+          rm -rfv package-lock.json
+          rm -rfv node_modules/
+          docker rm -f fortress-mysql
 
       - name: Login to Amazon ECR
         id: login-ecr
