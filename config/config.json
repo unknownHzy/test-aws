@@ -15,7 +15,9 @@
     "database": "test",
     "host": "localhost",
     "dialect": "mysql",
-    "port": 3306
+    "port": 3306,
+    "seederStorage": "sequelize",
+    "seederStorageTableName": "seeders_data"
   },
   "production": {
     "username": "root",
@@ -23,6 +25,8 @@
     "database": "test",
     "host": "localhost",
     "dialect": "mysql",
-    "port": 3306
+    "port": 3306,
+    "seederStorage": "sequelize",
+    "seederStorageTableName": "seeders_data"
   }
 }

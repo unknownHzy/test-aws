@@ -28,11 +28,11 @@ jobs:
 
           # todo CI test
       - name: copy CI env file from s3
-        run: aws s3 sync s3://fortress-uat/Installer-API/CI/ ./src/
+        run: aws s3 sync s3://fortress-uat/Installer-API/CI/ ./
 
       - name: Run CI Tests
         run: |
-          cd ./src/ && npm install
+          cd ./ && npm install
           docker run -d --name=fortress-mysql --net=host --env MYSQL_DATABASE=fortresstest --env MYSQL_ROOT_PASSWORD=Root@123456 mysql:8.0
           sleep 30s
           npx sequelize-cli db:migrate
@@ -41,7 +41,7 @@ jobs:
 
       - name: Cleaning CI Tests Resources
         run: |
-          cd ./src/
+          cd ./
           rm -rfv .env
           rm -rfv package-lock.json
           rm -rfv node_modules/
