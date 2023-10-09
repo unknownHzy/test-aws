@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run migrate && npx sequelize db:seed:all && node server.js --inspect",
     "migrate": "npx sequelize-cli db:migrate",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --timeout 60000"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +17,8 @@
     "sequelize": "^6.33.0"
   },
   "devDependencies": {
+    "assert": "^2.1.0",
+    "mocha": "^10.2.0",
     "sequelize-cli": "^6.6.1"
   }
 }
