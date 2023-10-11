@@ -24,6 +24,7 @@ describe('api', function () {
     describe('GET /api/users groupA', function () {
         it('respond with an array of users', async function () {
             const data = await callAPI('api/v1/users', 'get', {})
+            console.log('user list test', data)
             assert.equal(1, data.length)
         });
     });
