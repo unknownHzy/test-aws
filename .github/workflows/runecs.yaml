@@ -1,4 +1,4 @@
-name: UAT-2. Deploy to Amazon ECS
+name: 2. Deploy to Amazon ECS
 on:
   workflow_dispatch:
 env:

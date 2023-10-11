@@ -2,7 +2,7 @@
 
 # https://docs.github.com/zh/actions/learn-github-actions/understanding-github-actions
 # 工作流：workflows 可以定义多个工作流，工作流还可以被复用
-name: STG-1. Build and push image to ECR
+name: 1. Build and push image to ECR
 on:
   # 这里workflow_dispatch如果是 push的话，可以指定push到指定分支来触发此工作流
   # https://docs.github.com/zh/actions/using-workflows/events-that-trigger-workflows#push
