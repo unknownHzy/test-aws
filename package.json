@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run migrate && npx sequelize db:seed:all && node server.js --inspect",
     "migrate": "npx sequelize-cli db:migrate",
-    "test": "mocha --timeout 60000"
+    "test": "mocha -r @babel/register -r regenerator-runtime/runtime --timeout 60000"
   },
   "keywords": [],
   "author": "",
@@ -17,9 +17,11 @@
     "sequelize": "^6.33.0"
   },
   "devDependencies": {
+    "@babel/register": "^7.22.15",
     "assert": "^2.1.0",
     "axios": "^1.5.1",
     "mocha": "^10.2.0",
+    "regenerator-runtime": "^0.14.0",
     "sequelize-cli": "^6.6.1"
   }
 }

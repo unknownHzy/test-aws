@@ -20,12 +20,16 @@ const callAPI = async (url, method, body) => {
     }
 };
 
+after(function () {
+    setTimeout(() => {
+        process.exit();
+    }, 100);
+});
+
 describe('api', function () {
-    describe('GET /api/users groupA', function () {
-        it('respond with an array of users', async function () {
-            const data = await callAPI('api/v1/users', 'get', {})
-            console.log('user list test', data)
-            assert.equal(1, data.length)
-        });
+    it('respond with an array of users', async function () {
+        const data = await callAPI('api/v1/users', 'get', {})
+        console.log('user list test', data)
+        assert.equal(1, data.length)
     });
 });
