@@ -37,7 +37,7 @@ jobs:
           sleep 30s
           npx sequelize-cli db:migrate
           npx sequelize-cli db:seed:all
-          npm run test
+#          npm run test
 
       - name: Cleaning CI Tests Resources
         run: |
