@@ -2,7 +2,7 @@ const assert = require("assert");
 const axios = require("axios");
 const server = require('../server')
 
-const BASE_URL = 'http://0.0.0.0:9999'
+const BASE_URL = 'http://localhost:9999'
 const callAPI = async (url, method, body) => {
     try {
         const options = {

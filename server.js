@@ -23,7 +23,7 @@ const express = require('express');
 
 // Constants
 const PORT = 9999;
-const HOST = '0.0.0.0';
+const HOST = 'localhost';
 
 // App
 const app = express();
