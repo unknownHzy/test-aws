@@ -11,7 +11,7 @@ module.exports = {
       "seederStorage": "sequelize",
       "seederStorageTableName": "seeders_data"
   },
-  "test": {
+  /*"test": {
       "username": "root",
       "password": "root",
       "database": "test",
@@ -20,7 +20,7 @@ module.exports = {
       "port": 3306,
       "seederStorage": "sequelize",
       "seederStorageTableName": "seeders_data"
-  },
+  },*/
   "production": {
       "username": process.env.DB_USERNAME,
       "password": process.env.DB_PASSWORD,

@@ -29,6 +29,7 @@ after(function () {
 describe('api', function () {
     it('respond with an array of users', async function () {
         console.debug('just debug')
+        console.log('currentdb', process.env.DB_DATABASE)
         const data = await callAPI('api/v1/users', 'get', {})
         console.log('user list test', data)
         assert.equal(1, data.length)
