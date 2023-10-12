@@ -1,14 +1,18 @@
 const { Sequelize } = require('sequelize');
 const router = require('./routes/user')
+require('dotenv').config();
 
-const DATABASE = 'test';
-const USERNAME = 'root';
-const PASSWORD = 'root';
+const DATABASE = process.env.DB_DATABASE;
+const USERNAME = process.env.DB_USERNAME;
+const PASSWORD = process.env.DB_PASSWORD;
+const host = process.env.DB_HOST
 
 const sequelize = new Sequelize(DATABASE, USERNAME, PASSWORD, {
-    host: 'localhost',
+    host,
     dialect: 'mysql'
 }); // Example for sqlite
+
+console.log('DB config', DATABASE, USERNAME, PASSWORD, host)
 
 /*(async function a() {
     try {
