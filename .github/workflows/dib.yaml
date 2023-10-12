@@ -48,7 +48,7 @@ jobs:
           docker rm -f fortress-mysql
 
       - name: copy DEV env file from s3 and changing directory
-        run: aws s3 sync s3://fortress-uat/Installer-API/UAT/ ./src/
+        run: aws s3 sync s3://fortress-hangzhou-test/UAT/ ./
 
       - name: Login to Amazon ECR
         id: login-ecr
