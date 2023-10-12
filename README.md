@@ -19,7 +19,8 @@ docker run
 所以我在aws上的ECS cluster上建立了一个service
 ![img_1.png](img_1.png)
 ### 4. ECS Service部署成功，然后去github的action执行，部署到ecs的yaml
-### 5. 部署成功后在日志组中发现数据库链接失败
+### 5. 部署成功后在日志组中发现数据库链接失败, 因为没有数据库创建
+### 6. 创建RDS数据库，记录用户名/密码/数据库名到env，然后重新触发git action
 // todo 
 1. ci 数据库 access deny问题
 2. 部署到ecs
