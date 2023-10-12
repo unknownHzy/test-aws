@@ -28,7 +28,7 @@ jobs:
 
           # todo CI test
       - name: copy CI env file from s3
-        run: aws s3 sync s3://fortress-uat/Installer-API/CI/ ./
+        run: aws s3 sync s3://fortress-hangzhou-test/CI/ ./
 
       - name: Run CI Tests
         run: |
@@ -46,6 +46,9 @@ jobs:
           rm -rfv package-lock.json
           rm -rfv node_modules/
           docker rm -f fortress-mysql
+
+      - name: copy DEV env file from s3 and changing directory
+        run: aws s3 sync s3://fortress-uat/Installer-API/UAT/ ./src/
 
       - name: Login to Amazon ECR
         id: login-ecr
