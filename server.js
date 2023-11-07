@@ -26,8 +26,8 @@ console.log('DB config', DATABASE, USERNAME, PASSWORD, host)
 const express = require('express');
 
 // Constants
-const PORT = 9999;
-const HOST = 'localhost';
+const PORT = process.env.PORT;
+// const HOST = 'localhost';
 
 // App
 const app = express();
@@ -38,8 +38,8 @@ app.get('/api/v1/health-check', (req, res) => {
     res.send('Hello World');
 });
 
-app.listen(PORT, HOST, () => {
-    console.log(`\x1b[32mRunning on http://${HOST}:${PORT}\x1b[0m`);
+app.listen(PORT, () => {
+    console.log(`\x1b[32mRunning on port:${PORT}\x1b[0m`);
 });
 
 sequelize.authenticate()
