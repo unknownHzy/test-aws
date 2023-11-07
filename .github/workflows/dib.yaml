@@ -33,7 +33,7 @@ jobs:
       - name: Run CI Tests
         run: |
           cd ./ && npm install
-          docker run -d --name=fortress-mysql --net=host --env MYSQL_DATABASE=testdb --env MYSQL_ROOT_PASSWORD=root mysql:8.0
+          docker run -d --name=fortress-mysql --net=host --env MYSQL_DATABASE=fortress_test --env MYSQL_ROOT_PASSWORD=root mysql:8.0
           sleep 30s
           npx sequelize-cli db:migrate
           npx sequelize-cli db:seed:all
