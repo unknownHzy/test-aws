@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "npm run migrate && npx sequelize db:seed:all && node server.js --inspect",
+    "start": "npm run migrate && npx sequelize db:seed:all && node server.js",
     "migrate": "npx sequelize-cli db:migrate",
     "test": "mocha -r @babel/register -r regenerator-runtime/runtime --timeout 60000"
   },

@@ -3,8 +3,8 @@ on:
   workflow_dispatch:
 env:
   AWS_REGION: us-east-2                           # set this to your preferred AWS region, e.g. us-west-1
-  ECS_SERVICE: Fortress-Hangzhou-Test                   # set this to your Amazon ECS service name
-  ECS_CLUSTER: fortresshangzhou                       # set this to your Amazon ECS cluster name
+  ECS_SERVICE: Fortress-hangzhou-API-DEV                  # set this to your Amazon ECS service name
+  ECS_CLUSTER: Fortress-hangzhou-Cluster-DEV                       # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION: .aws/taskdefinition.json   # set this to the path to your Amazon ECS task definition
   CONTAINER_NAME: Fortress-hangzhou-API-DEV
 jobs:
